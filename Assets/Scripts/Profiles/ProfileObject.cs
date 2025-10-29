@@ -15,11 +15,15 @@ public class ProfileObject : MonoBehaviour
     [SerializeField] private string userName;
     [SerializeField] private string description;
     [SerializeField] private int friendNumber;
-
+    [Header("Profile_content")]
+    [SerializeField] private List<ProfileObject> friendList;
     private ImageController imageController;
     private List<Image> images;
+    [Header("Scripts")]
+    [SerializeField] private string dialogueScriptPath;
 
     public int Id { get => id; set => id = value; }
+    public string DialogueScriptPath { get => dialogueScriptPath; set => dialogueScriptPath = value; }
 
     private void Awake()
     {
@@ -87,5 +91,49 @@ public class ProfileObject : MonoBehaviour
             }
         }
         return foundImage;
+    }
+
+    public void AddFriend(ProfileObject profile)
+    {
+        if (DoesFriendExistAlredy(profile))
+        {
+            return;
+        } 
+
+        friendList.Add(profile);
+    }
+    
+    public bool DoesFriendExistAlredy(ProfileObject profile)
+    {
+        foreach (var friend in friendList)
+        {
+            if (friend.Equals(profile))
+            {
+                Debug.LogWarning("Friend Already exists. this.Id=" + this.id + " username=" + this.GetUserName() +
+                    " vs. " + profile.Id + " " + profile.GetUserName());
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    public List<ProfileObject> GetFriends()
+    {
+        if(friendList != null && friendList.Count > 0)
+        {
+            Debug.Log("There are friends in ProfileObject:" + friendList.Count);
+        }
+        else
+        {
+            Debug.Log("No friends in ProfileObject.");
+        }
+            return friendList;
+    }
+
+    private bool Equals(ProfileObject profile)
+    {
+        return this.id == profile.id;
     }
 }

@@ -12,15 +12,15 @@ public class ProfileFeedPanelController : PanelController
 
     private void OnEnable()
     {
-        //if ( userName == null )
+        //if ( friendUserName == null )
         //{
         //    string playerName = GameManager.Instance.GetPlayerName();
-        //    userName = string.IsNullOrEmpty(playerName) ? "mapache_anonimo" : playerName;
+        //    friendUserName = string.IsNullOrEmpty(playerName) ? "mapache_anonimo" : playerName;
         //}
-        //Debug.Log($"[ProfileFeedPanel] userName: {userName}");
+        //Debug.Log($"[ProfileFeedPanel] friendUserName: {friendUserName}");
         //if (string.IsNullOrEmpty(userNameTMP.text))
         //{
-        //    userNameTMP.text = userName;
+        //    userNameTMP.text = friendUserName;
         //}
     }
 

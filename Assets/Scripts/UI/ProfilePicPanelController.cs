@@ -19,7 +19,7 @@ public class ProfilePicPanelController : PanelController
             string playerName = GameManager.Instance.GetPlayerName();
             userName = string.IsNullOrEmpty(playerName) ? "mapache_anonimo" : playerName;
         }
-        Debug.Log($"[ProfileFeedPanel] userName: {userName}");
+        Debug.Log($"[ProfileFeedPanel] friendUserName: {userName}");
         if (string.IsNullOrEmpty(userNameTMP.text))
         {
             userNameTMP.text = $"Bienvenido/a {userName}";
