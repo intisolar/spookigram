@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MessagesPanelController : PanelController
 {
@@ -7,6 +8,7 @@ public class MessagesPanelController : PanelController
     [Header("Prefab & Parent")]
     [SerializeField] private FriendElementUtil friendItemPrefab;
     [SerializeField] private Transform contentParent;
+    [SerializeField] private GameObject chatPanel;
 
     private void OnEnable()
     {
@@ -26,12 +28,19 @@ public class MessagesPanelController : PanelController
         {
             Debug.Log(friend.GetUserName());
             var item = Instantiate(friendItemPrefab, contentParent);
-            item.BindMessage(friend.GetUserName(), null , friend.GetProfilePicture());
+            item.BindMessage(friend.GetUserName(), "Ver mensaje..." , friend.GetProfilePicture(), friend.DialogueScriptPath);
             // Si tu item tiene botón, acá podés suscribir:
-            // item.GetComponent<Button>()?.onClick.AddListener(() => OpenFriendProfile(friend));
+             item.GetComponentInChildren<Button>()?.onClick.AddListener(() => OpenFriendProfile(friend));
         }
     }
 
+    private void OpenFriendProfile(ProfileObject friend)
+    {
+        UIManager.Instance.ShowPanel(chatPanel);
+        ChatPanelController controller =
+        chatPanel.GetComponent<ChatPanelController>();
+        //chatPanel.ResourcesPath = "";
+    }
     private void ClearPreFabFriendsFromParent()
     {
         for (int i = contentParent.childCount - 1; i >= 0; i--)
@@ -50,5 +59,6 @@ public class MessagesPanelController : PanelController
     public void SetFriendsList(List<ProfileObject> friendsList)
     {
         this.friendsMessagesList = friendsList;
+
     }
 }

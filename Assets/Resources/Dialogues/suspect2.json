@@ -1,0 +1,13 @@
+{
+    "dialogue1": [
+        { "Jugador": "Hola, Gustavo. Soy periodista, estoy investigando la desaparición de Andrés Lux. ¿Podrías contarme qué pasó con la inmobiliaria?" },
+        { "Gustavo": "No tengo nada que ver con eso. Solo compartíamos oficina." },
+        { "Gustavo": "Pero ahora todos creen que soy parte de su circo." },
+        { "Jugador": "¿Y qué opinás de Sergio?" },
+        { "Gustavo": "Pobre tipo, lo entiendo. Pero está más obsesionado con lo que la gente dice que con la verdad." },
+        { "Gustavo": "Hace unos días vino a la oficina buscando documentos. Gritaba. Dijo que 'iba a limpiar su nombre a su manera'." },
+        { "Gustavo": "No lo vi después de eso." },
+        { "Jugador": "Gracias por tu tiempo, Gustavo." },
+        { "Gustavo": "Si vas a publicar algo, te advierto: difamación es delito." }
+    ]
+}

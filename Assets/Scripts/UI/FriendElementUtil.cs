@@ -7,6 +7,10 @@ public class FriendElementUtil : MonoBehaviour
     [SerializeField] private Image avatarImage;
     [SerializeField] private TMP_Text userNameTMP;
     [SerializeField] private TMP_Text lastMessageSent;
+    [SerializeField] private string dialoguePath;
+
+    public string DialoguePath { get => dialoguePath; set => dialoguePath = value; }
+
 
     // Llamalo apenas instancies el item
     public void BindFriend(string userName, Sprite avatarSprite)
@@ -24,7 +28,7 @@ public class FriendElementUtil : MonoBehaviour
         }
     }
 
-    public void BindMessage(string userName, string lastMessage, Sprite avatarSprite)
+    public void BindMessage(string userName, string lastMessage, Sprite avatarSprite, string path)
     {
         if (lastMessage != null)
         {
@@ -36,6 +40,11 @@ public class FriendElementUtil : MonoBehaviour
         {
             avatarImage.sprite = avatarSprite;
             avatarImage.enabled = (avatarSprite != null); // si no hay, lo oculto
+        }
+
+        if(path != null && path.Length > 0)
+        {
+            dialoguePath = path;
         }
     }
 }

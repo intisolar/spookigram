@@ -19,9 +19,11 @@ public class ProfileObject : MonoBehaviour
     [SerializeField] private List<ProfileObject> friendList;
     private ImageController imageController;
     private List<Image> images;
-    
+    [Header("Scripts")]
+    [SerializeField] private string dialogueScriptPath;
 
     public int Id { get => id; set => id = value; }
+    public string DialogueScriptPath { get => dialogueScriptPath; set => dialogueScriptPath = value; }
 
     private void Awake()
     {

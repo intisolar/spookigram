@@ -1,16 +1,24 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChatPanelController : PanelController
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private string resourcesPath;
+    [SerializeField] 
+    private TMP_Text textTMP;
+    [SerializeField]
+    private string friendUserName;
+    [SerializeField] private Image portraitLeft;
+    [SerializeField] private Image portraitRight;
+    public string ResourcesPath { get => resourcesPath; set => resourcesPath = value; }
+    public string UserName { get => friendUserName; set => friendUserName = value; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void SetPortraitLeft(Sprite s) { if (portraitLeft) portraitLeft.sprite = s; }
+    public void SetPortraitRight(Sprite s) { if (portraitRight) portraitRight.sprite = s; }
+
+    public void SetText(string text) { if (textTMP) textTMP.text = text; }
+
+
 }
