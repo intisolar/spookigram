@@ -1,16 +1,55 @@
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 
 public class FriendsPanelController : PanelController
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private List<ProfileObject> friendsList = null;
+    [Header("Prefab & Parent")]
+    [SerializeField] private FriendElementUtil friendItemPrefab;
+    [SerializeField] private Transform contentParent;
+
+    private void OnEnable()
     {
-        
+        ClearPreFabFriendsFromParent();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void BuildFriendList()
     {
         
+
+        if (friendsList == null || friendsList.Count == 0)
+        {
+            Debug.LogWarning("FriendList is null");
+            return;
+        }
+        foreach (var friend in friendsList)
+        {
+            Debug.Log(friend.GetUserName());
+            var item = Instantiate(friendItemPrefab, contentParent);
+            item.BindFriend(friend.GetUserName(), friend.GetProfilePicture());
+            // Si tu item tiene botón, acá podés suscribir:
+            // item.GetComponent<Button>()?.onClick.AddListener(() => OpenFriendProfile(friend));
+        }
+    }
+
+    private void ClearPreFabFriendsFromParent()
+    {
+        for (int i = contentParent.childCount - 1; i >= 0; i--)
+            Destroy(contentParent.GetChild(i).gameObject);
+    }
+    private void OnDisable()
+    {
+        ResetPanelInfo();
+    }
+    public override void ResetPanelInfo()
+    {
+        friendsList = null;
+        ClearPreFabFriendsFromParent();
+    }
+
+    public void SetFriendsList(List<ProfileObject> friendsList)
+    {
+        this.friendsList = friendsList;
     }
 }
