@@ -94,8 +94,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void TriggerGoodEnding()
     {
-        //post posts
-        // 1 post by the family thanking you - 1 post by the newspaper
+        //post postsaqwspaper
         Debug.Log("Final bueno");
 
     }
@@ -107,6 +106,7 @@ public class GameManager : MonoBehaviour
 
         UIManager.Instance.DeactivateConfirmationPanel();
         UIManager.Instance.ShowPanel(initPanel);
+
 
     }
 
