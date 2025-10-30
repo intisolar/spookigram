@@ -3676,6 +3676,24 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: Background
+    clip: {fileID: 8300000, guid: b75c0c97a59908e47b27230561cfbb90, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Click
+    clip: {fileID: 8300000, guid: 40b77e20b29b8164697a3f2e59f0c696, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Notepad OPEN
+    clip: {fileID: 8300000, guid: 8f0b83e06938a914a9ce2b4f8e6ab0c1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &640044706
 Transform:
   m_ObjectHideFlags: 0
