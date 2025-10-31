@@ -62,14 +62,12 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// The criminal remains free and commits another crime
+    /// Nothing gets resolved
     /// </summary>
     public void TriggerTerribleEnding()
     {
-        //post posts
-        //4 posts - 2 saying they'll keep doing what they love - 2 more victims ?
-        Debug.Log("Final terrible");
-        Restart();
+        UIManager.Instance.DeactivateConfirmationPanel();
+        UIManager.Instance.ShowPanelByName("TerribleEnding");      
     }
 
     /// <summary>
@@ -77,8 +75,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void TriggerVeryBadEnding()
     {
-        //post posts
-        //1 post from the one in jail claiming for justice - 2 more victims ?
+        UIManager.Instance.ShowPanelByName("VeryBadEnding");
         Debug.Log("Final muy malo");
 
     }
@@ -87,8 +84,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void TriggerBadEnding()
     {
-        //post posts
-        //1 post from the criminal saying justing has prevailed and they are preparing to sue
+
+        UIManager.Instance.ShowPanelByName("BadEnding");
         Debug.Log("Final malo");
 
     }
@@ -98,7 +95,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void TriggerGoodEnding()
     {
-        //post postsaqwspaper
+
+        UIManager.Instance.ShowPanelByName("GoodEnding");
         Debug.Log("Final bueno");
 
     }
@@ -108,7 +106,6 @@ public class GameManager : MonoBehaviour
         ResetUserInfo();
         ResetPanelsInfo();
 
-        UIManager.Instance.DeactivateConfirmationPanel();
         UIManager.Instance.ShowPanel(initPanel);
         AudioManager.instance.Stop("Background");
         AudioManager.instance.Play("Menu");
