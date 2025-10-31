@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
         // Activa solo el indicado
         targetPanel.SetActive(true);
         currentPanel = targetPanel;
+        AudioManager.instance.Play("Click");
 
         //var profileFeedController = targetPanel.GetComponent<ProfileFeedPanelController>();
         //if (profileFeedController != null)
@@ -61,6 +62,7 @@ public class UIManager : MonoBehaviour
     {
         confirmationPanel.SetActive(true);
         confirmationPanel.GetComponent<ConfirmationPanelController>().SetTMPMessage(message);
+
     }
 
     public void DeactivateConfirmationPanel()

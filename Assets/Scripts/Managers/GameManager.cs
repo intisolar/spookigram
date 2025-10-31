@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UIManager.Instance.ShowPanel(initPanel);
+        AudioManager.instance.Play("Menu");
     }
     private void StartSingleton()
     {
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
     public void SetPlayerName(string newPlayerName)
     {
         playerProfile.SetUserName(newPlayerName);
+        AudioManager.instance.Stop("Menu");
+        AudioManager.instance.Play("Background");
     }
 
     public string GetPlayerName()
@@ -107,6 +110,8 @@ public class GameManager : MonoBehaviour
 
         UIManager.Instance.DeactivateConfirmationPanel();
         UIManager.Instance.ShowPanel(initPanel);
+        AudioManager.instance.Stop("Background");
+        AudioManager.instance.Play("Menu");
 
 
     }
