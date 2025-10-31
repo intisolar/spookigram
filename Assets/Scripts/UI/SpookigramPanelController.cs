@@ -47,7 +47,7 @@ public class SpookigramPanelController : PanelController
         UIManager.Instance.ShowPanel(messagesPanel);
         MessagesPanelController controller =
         messagesPanel.GetComponent<MessagesPanelController>();
-        controller.SetFriendsList(profileManager.PlayerProfile.GetFriends());
-        controller.BuildFriendList();
+       // controller.SetFriendsList(profileManager.PlayerProfile.GetFriends());
+       // controller.BuildFriendList();
     }
 }

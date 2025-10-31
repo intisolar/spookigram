@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MessagesPanelController : PanelController
 {
@@ -7,10 +8,17 @@ public class MessagesPanelController : PanelController
     [Header("Prefab & Parent")]
     [SerializeField] private FriendElementUtil friendItemPrefab;
     [SerializeField] private Transform contentParent;
+    [SerializeField] private GameObject chatPanel;
+
+    private void Start()
+    {
+        SetFriendsList(ProfileManager.Instance.PlayerProfile.GetFriends());
+        BuildFriendList();
+    }
 
     private void OnEnable()
     {
-        ClearPreFabFriendsFromParent();
+       // ClearPreFabFriendsFromParent();
     }
 
     public void BuildFriendList()
@@ -26,12 +34,25 @@ public class MessagesPanelController : PanelController
         {
             Debug.Log(friend.GetUserName());
             var item = Instantiate(friendItemPrefab, contentParent);
-            item.BindMessage(friend.GetUserName(), null , friend.GetProfilePicture());
+            item.BindMessage(friend.GetUserName(), "Ver mensaje..." , friend.GetProfilePicture(), friend.DialogueScriptPath);
             // Si tu item tiene botón, acá podés suscribir:
-            // item.GetComponent<Button>()?.onClick.AddListener(() => OpenFriendProfile(friend));
+            item.GetComponentInChildren<Button>()?.onClick.AddListener(() => OpenFriendProfile(friend));
         }
     }
 
+    private void OpenFriendProfile(ProfileObject friend)
+    {
+        UIManager.Instance.ShowPanel(chatPanel);
+        ChatPanelController controller =
+        chatPanel.GetComponent<ChatPanelController>();
+        controller.ResourcesPath = friend.DialogueScriptPath;
+        controller.UserName = friend.GetUserName();
+        controller.SetPortraitLeft(friend.GetProfilePicture());
+        controller.SetPortraitRight(GameManager.Instance.GetPlayerPicture());
+        controller.SetTitlePanel();
+        controller.LoadDialogue();
+        
+    }
     private void ClearPreFabFriendsFromParent()
     {
         for (int i = contentParent.childCount - 1; i >= 0; i--)
@@ -39,7 +60,7 @@ public class MessagesPanelController : PanelController
     }
     private void OnDisable()
     {
-        ResetPanelInfo();
+       // ResetPanelInfo();
     }
     public override void ResetPanelInfo()
     {
@@ -50,5 +71,6 @@ public class MessagesPanelController : PanelController
     public void SetFriendsList(List<ProfileObject> friendsList)
     {
         this.friendsMessagesList = friendsList;
+
     }
 }

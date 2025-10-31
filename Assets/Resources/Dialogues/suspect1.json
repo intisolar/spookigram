@@ -1,0 +1,47 @@
+{
+    "id": "dialogue1",
+    "layout": {
+        "L": "Gustavo",
+        "R": "Jugador"
+
+    },
+    "lines": [
+        {
+            "speaker": "Jugador",
+            "text": "Hola, Gustavo. Soy periodista, estoy investigando la desaparición de Andrés Lux. ¿Podrías contarme qué pasó con la inmobiliaria?"
+        },
+        {
+            "speaker": "Gustavo",
+            "text": "No tengo nada que ver con eso. Solo compartíamos oficina."
+        },
+        {
+            "speaker": "Gustavo",
+            "text": "Pero ahora todos creen que soy parte de su circo."
+        },
+        {
+            "speaker": "Jugador",
+            "text": "¿Y qué opinás de Sergio?"
+        },
+        {
+            "speaker": "Gustavo",
+            "text": "Pobre tipo, lo entiendo. Pero está más obsesionado con lo que la gente dice que con la verdad."
+        },
+        {
+            "speaker": "Gustavo",
+            "text": "Hace unos días vino a la oficina buscando documentos. Gritaba. Dijo que 'iba a limpiar su nombre a su manera'."
+        },
+        {
+            "speaker": "Gustavo",
+            "text": "No lo vi después de eso."
+        },
+        {
+            "speaker": "Jugador",
+            "text": "Gracias por tu tiempo, Gustavo."
+        },
+        {
+            "speaker": "Gustavo",
+            "text": "Si vas a publicar algo, te advierto: difamación es delito."
+        }
+    ],
+    "clue": "Gustavo compartía oficina con Andrés. Nos \"recordó\" que puede iniciar acciones legales por cualquier cosa que publiquemos sobre él. Dice que Sergio fue a buscar documentos para limpiar su nombre. "
+}
