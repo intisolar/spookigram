@@ -1,13 +1,69 @@
 {
-    "dialogue1": [
-        { "Jugador": "Hola, Gustavo. Soy periodista, estoy investigando la desaparición de Andrés Lux. ¿Podrías contarme qué pasó con la inmobiliaria?" },
-        { "Gustavo": "No tengo nada que ver con eso. Solo compartíamos oficina." },
-        { "Gustavo": "Pero ahora todos creen que soy parte de su circo." },
-        { "Jugador": "¿Y qué opinás de Sergio?" },
-        { "Gustavo": "Pobre tipo, lo entiendo. Pero está más obsesionado con lo que la gente dice que con la verdad." },
-        { "Gustavo": "Hace unos días vino a la oficina buscando documentos. Gritaba. Dijo que 'iba a limpiar su nombre a su manera'." },
-        { "Gustavo": "No lo vi después de eso." },
-        { "Jugador": "Gracias por tu tiempo, Gustavo." },
-        { "Gustavo": "Si vas a publicar algo, te advierto: difamación es delito." }
-    ]
+    "id": "dialogue_sergio_01",
+    "layout": {
+        "R": "Jugador",
+        "L": "Sergio"
+    },
+    "lines": [
+        {
+            "speaker": "Jugador",
+            "text": "Hola, Sergio. Estoy preparando una nota sobre el caso de Lux Inmobiliaria. ¿Podrías contarme cómo era Andrés en el trato personal?"
+        },
+
+        {
+            "speaker": "Sergio",
+            "text": "¿Para qué? Ya bastante tuve con ver mi cara en todos lados, ¿no?"
+        },
+        {
+            "speaker": "Sergio",
+            "text": "Ese tipo me arruinó más de lo que imagina."
+        },
+
+        {
+            "speaker": "Jugador",
+            "text": "Entiendo… vi la foto del \"acuerdo\". Algunos dicen que te usó para limpiar su imagen."
+        },
+
+        {
+            "speaker": "Sergio",
+            "text": "Sí, y me dejó como el tonto del pueblo."
+        },
+        {
+            "speaker": "Sergio",
+            "text": "No sabés lo que es que te digan \"bobo\" cada vez que vas al almacén."
+        },
+        {
+            "speaker": "Sergio",
+            "text": "Perdí clientes, amigos… hasta mi hijo cambió de escuela por las burlas."
+        },
+
+        {
+            "speaker": "Jugador",
+            "text": "¿Lo viste después de que saliera todo a la luz?"
+        },
+
+        {
+            "speaker": "Sergio",
+            "text": "…No oficialmente. Digamos que hablamos."
+        },
+        {
+            "speaker": "Sergio",
+            "text": "Él quería \"arreglar\". Dijo que podía devolverme algo."
+        },
+        {
+            "speaker": "Sergio",
+            "text": "Pero el que se arregló fue él, al cementerio."
+        },
+
+        {
+            "speaker": "Jugador",
+            "text": "¿Estás diciendo que vos…?"
+        },
+
+        {
+            "speaker": "Sergio",
+            "text": "No digo nada."
+        }
+    ],
+    "clue" :  "Sergio siente que Andrés dañó su vida. Mantuvieron comunicación después del escándalo, aunque Andrés no llegó a saldar la deuda."
 }

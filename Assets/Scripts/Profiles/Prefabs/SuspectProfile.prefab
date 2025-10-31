@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6074001749391285314}
+  - component: {fileID: 1777839844169062319}
   m_Layer: 0
   m_Name: SuspectProfile
   m_TagString: Untagged
@@ -24,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4159564205352360849}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 722.9135, y: 93.73596, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -32,6 +33,29 @@ Transform:
   - {fileID: 3580944717590789243}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1777839844169062319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4159564205352360849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 423fbc0d3c80dc34cb0da3f3f959c56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuspectProfile
+  id: 1
+  role: 1
+  profileImage: {fileID: 1953305634408530588}
+  userName: sergio_1234
+  description: this is the criminal description
+  friendNumber: 11
+  friendList:
+  - {fileID: 0}
+  - {fileID: 0}
+  dialogueScriptPath: Dialogues/suspect1
+  isCriminal: 1
 --- !u!1 &5527086746058542660
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +121,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6917619281740314598c003a81c515bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d1f05dbd5d01b7f42ac3b04a779d07c7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d1f05dbd5d01b7f42ac3b04a779d07c7
+guid: b98e1eda5ea6a994a9528d10885b71d1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8253283989701671070
-    second: Profile (3)_0
+      213: 8126432572652969595
+    second: "\u2014Pngtree\u2014black frame magnifier glass flat_6513071_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Profile (3)_0
+      name: "\u2014Pngtree\u2014black frame magnifier glass flat_6513071_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 898
-        height: 811
+        x: 173
+        y: 88
+        width: 854
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e9836949f0e898270800000000000000
-      internalID: 8253283989701671070
+      spriteID: b7ed4208e53e6c070800000000000000
+      internalID: 8126432572652969595
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Profile (3)_0: 8253283989701671070
+      "\u2014Pngtree\u2014black frame magnifier glass flat_6513071_0": 8126432572652969595
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
