@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FriendsPanelController : PanelController
 {
@@ -29,8 +30,12 @@ public class FriendsPanelController : PanelController
             var item = Instantiate(friendItemPrefab, contentParent);
             item.BindFriend(friend.GetUserName(), friend.GetProfilePicture());
             // Si tu item tiene botón, acá podés suscribir:
-            // item.GetComponent<Button>()?.onClick.AddListener(() => OpenFriendProfile(friend));
+            item.GetComponentInChildren<Button>()?.onClick.AddListener(() => OpenFriendProfile(friend));
         }
+    }
+    private void OpenFriendProfile(ProfileObject friend)
+    {
+        FriendProfilePanelManager.Instance.OpenFriendProfile(friend.Id);
     }
 
     private void ClearPreFabFriendsFromParent()
