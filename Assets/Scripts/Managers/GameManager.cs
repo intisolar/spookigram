@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     [SerializeField] private GameObject initPanel;
     [SerializeField] private ProfileObject playerProfile;
+    [SerializeField] private int clues;
 
     private void Awake()
     {
@@ -128,6 +129,12 @@ public class GameManager : MonoBehaviour
         if (loginPanel != null)
         {
             loginPanel.ResetPanelInfo();
+        }
+
+        var notePadPanel = Object.FindFirstObjectByType<NotePadPanelController>(FindObjectsInactive.Include);
+        if (notePadPanel != null)
+        {
+            notePadPanel.ResetPanelInfo();
         }
     }
 

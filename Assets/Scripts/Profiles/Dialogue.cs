@@ -5,6 +5,7 @@ using UnityEngine;
 public class Dialogue
 {
     public string id; 
-    public string speakers; 
+    public DialogueLayout layout; 
     public DialogueLine[] lines;
+    public string clue;
 }

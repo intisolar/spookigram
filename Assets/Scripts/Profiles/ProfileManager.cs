@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ProfileManager : MonoBehaviour
 {
+    public static ProfileManager Instance { get; private set; }
     [SerializeField] private ProfileObject playerProfile;
     [SerializeField] private ProfileObject victimProfile;
     [SerializeField] private ProfileObject criminalProfile;
@@ -12,8 +13,11 @@ public class ProfileManager : MonoBehaviour
     public ProfileObject VictimProfile { get => victimProfile; private set => victimProfile = value; }
     public ProfileObject CriminalProfile { get => criminalProfile; private set => criminalProfile = value; }
 
+
+
     private void Awake()
     {
+        StartSingleton();
         SetSuspects();
     }
 
@@ -31,14 +35,15 @@ public class ProfileManager : MonoBehaviour
         {
             return GetSuspectById(userId);
         }
-        else {
+        else
+        {
             throw new System.Exception("Profile role " + profileRole + " does not exist.");
         }
     }
 
     private void SetSuspects()
     {
-         suspectProfiles = gameObject.GetComponentsInChildren<SuspectProfile>();
+        suspectProfiles = gameObject.GetComponentsInChildren<SuspectProfile>();
     }
 
     public ProfileObject[] GetSuspects()
@@ -50,7 +55,7 @@ public class ProfileManager : MonoBehaviour
     {
         for (int i = 0; i < suspectProfiles.Length; i++)
         {
-            if(id == suspectProfiles[i].Id)
+            if (id == suspectProfiles[i].Id)
             {
                 return (suspectProfiles[i]);
             }
@@ -83,4 +88,15 @@ public class ProfileManager : MonoBehaviour
         return userProfile.IsCriminal;
     }
 
+    private void StartSingleton()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 }
