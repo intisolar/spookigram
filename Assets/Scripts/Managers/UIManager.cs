@@ -7,8 +7,10 @@ public class UIManager : MonoBehaviour
     [Header("UI Panels")]
     [SerializeField] private List<GameObject> panels;
     [SerializeField] private GameObject confirmationPanel;
-    [SerializeField] private GameObject notificationPanel;
     [SerializeField] private GameObject chooseCriminalPanel;
+    [Header("Notifications")]
+    [SerializeField] private GameObject infoNotificationPanel;
+    [SerializeField] private GameObject clueNotificationPanel;
     public static UIManager Instance { get; private set; }
 
     private GameObject currentPanel;
@@ -69,5 +71,14 @@ public class UIManager : MonoBehaviour
     public void DeactivateConfirmationPanel()
     {
         confirmationPanel.SetActive(false);
+    }
+
+    public void NotifyInformationAdded()
+    {
+        infoNotificationPanel.SetActive(true);
+    }
+    public void NotifyClueAdded()
+    {
+        clueNotificationPanel.SetActive(true);
     }
 }

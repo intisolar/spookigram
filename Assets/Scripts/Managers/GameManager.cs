@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour
         }
 
         clues.Add(clueId);
-        //UIManager.Instance.
+        UIManager.Instance.NotifyClueAdded();
         AddClueToNotes(clueNote, clueId);
         if (isKeyClue)
         {

@@ -13,7 +13,7 @@ public class ClueNoteButtonController : MonoBehaviour
         var notePadPanel = Object.FindFirstObjectByType<NotePadPanelController>(FindObjectsInactive.Include);
         if (notePadPanel != null)
         {
-            notePadPanel.CreateClueNote(ClueNote, Id);
+            notePadPanel.CreateClueNote(ClueNote, Id, true);
         }
     }
 

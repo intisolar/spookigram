@@ -33,6 +33,16 @@ public class NotePadPanelController : PanelController
         var notePrefab = Instantiate(clueNote, contentParent);
         notePrefab.SetText(note);
         noteIds.Add(id);
+        
+    }
+
+    public void CreateClueNote(string note, string id, bool isInfoPieceOnly)
+    {
+        if(isInfoPieceOnly)
+        {
+            UIManager.Instance.NotifyInformationAdded();
+        }
+        CreateClueNote(note, id);
     }
 
     public override void ResetPanelInfo()
