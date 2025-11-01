@@ -1,11 +1,17 @@
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public int KeyClueCount { get => keyClueCount; private set => keyClueCount = value; }
+
     [SerializeField] private GameObject initPanel;
     [SerializeField] private ProfileObject playerProfile;
+    [SerializeField] private int keyClueCount;
+    [SerializeField] private List<string> clues = new();
 
     private void Awake()
     {
@@ -14,6 +20,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UIManager.Instance.ShowPanel(initPanel);
+        AudioManager.instance.Play("Menu");
     }
     private void StartSingleton()
     {
@@ -35,6 +42,8 @@ public class GameManager : MonoBehaviour
     public void SetPlayerName(string newPlayerName)
     {
         playerProfile.SetUserName(newPlayerName);
+        AudioManager.instance.Stop("Menu");
+        AudioManager.instance.Play("Background");
     }
 
     public string GetPlayerName()
@@ -57,15 +66,32 @@ public class GameManager : MonoBehaviour
         return playerProfile.GetProfilePictureById(picId);
     }
 
+    public void FinishGame(bool isCriminal)
+    {
+        if(isCriminal)
+        {
+            if(KeyClueCount >= 2)
+            {
+                TriggerGoodEnding();
+            }
+            else
+            {
+                TriggerBadEnding();
+            }
+        }
+        else
+        {
+            TriggerVeryBadEnding();
+        }
+    }
+
     /// <summary>
-    /// The criminal remains free and commits another crime
+    /// Nothing gets resolved
     /// </summary>
     public void TriggerTerribleEnding()
     {
-        //post posts
-        //4 posts - 2 saying they'll keep doing what they love - 2 more victims ?
-        Debug.Log("Final terrible");
-        Restart();
+        UIManager.Instance.DeactivateConfirmationPanel();
+        UIManager.Instance.ShowPanelByName("TerribleEnding");      
     }
 
     /// <summary>
@@ -73,8 +99,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void TriggerVeryBadEnding()
     {
-        //post posts
-        //1 post from the one in jail claiming for justice - 2 more victims ?
+        UIManager.Instance.ShowPanelByName("VeryBadEnding");
         Debug.Log("Final muy malo");
 
     }
@@ -83,8 +108,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void TriggerBadEnding()
     {
-        //post posts
-        //1 post from the criminal saying justing has prevailed and they are preparing to sue
+
+        UIManager.Instance.ShowPanelByName("BadEnding");
         Debug.Log("Final malo");
 
     }
@@ -94,18 +119,21 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void TriggerGoodEnding()
     {
-        //post postsaqwspaper
+
+        UIManager.Instance.ShowPanelByName("GoodEnding");
         Debug.Log("Final bueno");
 
     }
 
     public void Restart()
     {
+        Debug.Log("RestartedGame for user" + playerProfile.GetUserName());
         ResetUserInfo();
         ResetPanelsInfo();
 
-        UIManager.Instance.DeactivateConfirmationPanel();
         UIManager.Instance.ShowPanel(initPanel);
+        AudioManager.instance.Stop("Background");
+        AudioManager.instance.Play("Menu");
 
 
     }
@@ -129,10 +157,41 @@ public class GameManager : MonoBehaviour
         {
             loginPanel.ResetPanelInfo();
         }
+
+        var notePadPanel = Object.FindFirstObjectByType<NotePadPanelController>(FindObjectsInactive.Include);
+        if (notePadPanel != null)
+        {
+            notePadPanel.ResetPanelInfo();
+        }
     }
 
     private void ResetUserInfo()
     {
         playerProfile.ResetPlayerInfo();
+    }
+
+    public void AddClue(string clueId, bool isKeyClue, string clueNote)
+    {
+        if (clues.Contains(clueId))
+        {
+            return;
+        }
+
+        clues.Add(clueId);
+        UIManager.Instance.NotifyClueAdded();
+        AddClueToNotes(clueNote, clueId);
+        if (isKeyClue)
+        {
+            KeyClueCount++;
+        }
+    }
+
+    private void AddClueToNotes(string clueNote, string clueId)
+    {
+        var notePadPanel = Object.FindFirstObjectByType<NotePadPanelController>(FindObjectsInactive.Include);
+        if (notePadPanel != null)
+        {
+            notePadPanel.CreateClueNote(clueNote, clueId);
+        }
     }
 }

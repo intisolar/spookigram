@@ -10,9 +10,15 @@ public class MessagesPanelController : PanelController
     [SerializeField] private Transform contentParent;
     [SerializeField] private GameObject chatPanel;
 
+    private void Start()
+    {
+        SetFriendsList(ProfileManager.Instance.PlayerProfile.GetFriends());
+        BuildFriendList();
+    }
+
     private void OnEnable()
     {
-        ClearPreFabFriendsFromParent();
+       // ClearPreFabFriendsFromParent();
     }
 
     public void BuildFriendList()
@@ -30,7 +36,7 @@ public class MessagesPanelController : PanelController
             var item = Instantiate(friendItemPrefab, contentParent);
             item.BindMessage(friend.GetUserName(), "Ver mensaje..." , friend.GetProfilePicture(), friend.DialogueScriptPath);
             // Si tu item tiene botón, acá podés suscribir:
-             item.GetComponentInChildren<Button>()?.onClick.AddListener(() => OpenFriendProfile(friend));
+            item.GetComponentInChildren<Button>()?.onClick.AddListener(() => OpenFriendProfile(friend));
         }
     }
 
@@ -39,7 +45,13 @@ public class MessagesPanelController : PanelController
         UIManager.Instance.ShowPanel(chatPanel);
         ChatPanelController controller =
         chatPanel.GetComponent<ChatPanelController>();
-        //chatPanel.ResourcesPath = "";
+        controller.ResourcesPath = friend.DialogueScriptPath;
+        controller.UserName = friend.GetUserName();
+        controller.SetPortraitLeft(friend.GetProfilePicture());
+        controller.SetPortraitRight(GameManager.Instance.GetPlayerPicture());
+        controller.SetTitlePanel();
+        controller.LoadDialogue();
+        
     }
     private void ClearPreFabFriendsFromParent()
     {
@@ -48,7 +60,7 @@ public class MessagesPanelController : PanelController
     }
     private void OnDisable()
     {
-        ResetPanelInfo();
+       // ResetPanelInfo();
     }
     public override void ResetPanelInfo()
     {
