@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<GameObject> panels;
     [SerializeField] private GameObject confirmationPanel;
     [SerializeField] private GameObject notificationPanel;
+    [SerializeField] private GameObject chooseCriminalPanel;
     public static UIManager Instance { get; private set; }
 
     private GameObject currentPanel;

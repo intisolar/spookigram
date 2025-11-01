@@ -1,12 +1,17 @@
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public int KeyClueCount { get => keyClueCount; private set => keyClueCount = value; }
+
     [SerializeField] private GameObject initPanel;
     [SerializeField] private ProfileObject playerProfile;
-    [SerializeField] private int clues;
+    [SerializeField] private int keyClueCount;
+    [SerializeField] private List<string> clues = new();
 
     private void Awake()
     {
@@ -61,6 +66,25 @@ public class GameManager : MonoBehaviour
         return playerProfile.GetProfilePictureById(picId);
     }
 
+    public void FinishGame(bool isCriminal)
+    {
+        if(isCriminal)
+        {
+            if(KeyClueCount >= 2)
+            {
+                TriggerGoodEnding();
+            }
+            else
+            {
+                TriggerBadEnding();
+            }
+        }
+        else
+        {
+            TriggerVeryBadEnding();
+        }
+    }
+
     /// <summary>
     /// Nothing gets resolved
     /// </summary>
@@ -103,6 +127,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        Debug.Log("RestartedGame for user" + playerProfile.GetUserName());
         ResetUserInfo();
         ResetPanelsInfo();
 
@@ -143,5 +168,30 @@ public class GameManager : MonoBehaviour
     private void ResetUserInfo()
     {
         playerProfile.ResetPlayerInfo();
+    }
+
+    public void AddClue(string clueId, bool isKeyClue, string clueNote)
+    {
+        if (clues.Contains(clueId))
+        {
+            return;
+        }
+
+        clues.Add(clueId);
+        //UIManager.Instance.
+        AddClueToNotes(clueNote, clueId);
+        if (isKeyClue)
+        {
+            KeyClueCount++;
+        }
+    }
+
+    private void AddClueToNotes(string clueNote, string clueId)
+    {
+        var notePadPanel = Object.FindFirstObjectByType<NotePadPanelController>(FindObjectsInactive.Include);
+        if (notePadPanel != null)
+        {
+            notePadPanel.CreateClueNote(clueNote, clueId);
+        }
     }
 }
